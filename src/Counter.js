@@ -7,18 +7,18 @@ function Counter () {
     var [counter, setCounter] = useState(0);
     let [initalized, setInitialized] = useState(false);
 
-    var baseUrl = "/";
-    var route = "todo-service";
+    var baseUrl = "/api";
+    var route = "/todo-service";
     var key = "89c3f81736ec40fba5417fede2df8b54";
 
     useEffect(() => {
         async function initalize() {
             if(!initalized) {
-                var counter = await axios.get(baseUrl + route + `/api/GetCounter?code=${key}`);
+                var counter = await axios.get(baseUrl + route + `/GetCounter?code=${key}`);
                 setCounter(counter.data.CurrentCount);
                 setInitialized(true);
 
-                var signalRConnection = await axios.get(baseUrl + route + `/api/negotiate?code=${key}`);
+                var signalRConnection = await axios.get(baseUrl + route + `/negotiate?code=${key}`);
                 const options = {
                     accessTokenFactory: () => signalRConnection.data.accessToken
                 }
@@ -39,10 +39,10 @@ function Counter () {
     });
 
     let incrementCount = async () => {
-        await axios.get(baseUrl + route + `/api/IncrementCounter?code=${key}`);
+        await axios.get(baseUrl + route + `/IncrementCounter?code=${key}`);
     }
     let decrementCount = async () => {
-        await axios.get(baseUrl + route + `/api/DecrementCounter?code=${key}`);
+        await axios.get(baseUrl + route + `/DecrementCounter?code=${key}`);
     }
 
     return <div>

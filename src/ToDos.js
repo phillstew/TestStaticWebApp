@@ -33,7 +33,7 @@ function ToDoList () {
         <h3>Todos pulled from cosmosdb:</h3>
         {todos.map((todo) => (
             <div>
-                {todo.TodoTask}
+                {todo.todoTask}
             </div>
             ))}
     </div>);

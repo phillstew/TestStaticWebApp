@@ -7,14 +7,14 @@ function ToDoList () {
     var [todos, setTodos] = useState([]);
     let [initalized, setInitialized] = useState(false);
 
-    var baseUrl = "/";
-    var route = "todo-service";
+    var baseUrl = "/api";
+    var route = "/todo-service";
     var key = "89c3f81736ec40fba5417fede2df8b54";
 
     useEffect(() => {
         async function initalize() {
             if(!initalized) {
-                var todos = await axios.get(baseUrl + `/api/todo?code=${key}`);
+                var todos = await axios.get(baseUrl + route + `/todo?code=${key}`);
                setTodos(todos.data);
                setInitialized(true);
             }

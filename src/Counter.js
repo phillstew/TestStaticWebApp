@@ -14,11 +14,15 @@ function Counter () {
     useEffect(() => {
         async function initalize() {
             if(!initalized) {
-                var counter = await axios.get(baseUrl + route + `/GetCounter?code=${key}`);
+                var counter = await axios.get(baseUrl + route + `/GetCounter`, {
+                    "Ocp-Apim-Subscription-Key": key
+                });
                 setCounter(counter.data.CurrentCount);
                 setInitialized(true);
 
-                var signalRConnection = await axios.get(baseUrl + route + `/negotiate?code=${key}`);
+                var signalRConnection = await axios.get(baseUrl + route + `/negotiate`, {
+                    "Ocp-Apim-Subscription-Key": key
+                });
                 const options = {
                     accessTokenFactory: () => signalRConnection.data.accessToken
                 }
@@ -39,10 +43,14 @@ function Counter () {
     });
 
     let incrementCount = async () => {
-        await axios.get(baseUrl + route + `/IncrementCounter?code=${key}`);
+        await axios.get(baseUrl + route + `/IncrementCounter`, {
+            "Ocp-Apim-Subscription-Key": key
+        });
     }
     let decrementCount = async () => {
-        await axios.get(baseUrl + route + `/DecrementCounter?code=${key}`);
+        await axios.get(baseUrl + route + `/DecrementCounter`, {
+            "Ocp-Apim-Subscription-Key": key
+        });
     }
 
     return <div>

@@ -14,7 +14,9 @@ function ToDoList () {
     useEffect(() => {
         async function initalize() {
             if(!initalized) {
-                var todos = await axios.get(baseUrl + route + `/todo?code=${key}`);
+                var todos = await axios.get(baseUrl + route + `/todo`, {
+                    "Ocp-Apim-Subscription-Key": key
+                });
                setTodos(todos.data);
                setInitialized(true);
             }

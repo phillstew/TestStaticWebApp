@@ -37,7 +37,7 @@ function Counter () {
                     .build(HttpTransportType.None);
 
                 connection.on('count', (data) => {
-                    setCounter(+data[0]);
+                    setCounter(+data);
                 });
 
                 connection.start();

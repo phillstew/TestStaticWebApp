@@ -8,7 +8,7 @@ function Counter () {
     let [initalized, setInitialized] = useState(false);
 
     var baseUrl = "/api";
-    var route = "/todo-service";
+    var route = "/counter-service";
     var key = "89c3f81736ec40fba5417fede2df8b54";
 
     

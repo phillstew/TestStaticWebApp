@@ -1,8 +1,16 @@
 import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Home from './Home';
+import Test from './Test';
 
 function App() {
-  const value = 'World';
-  return <div>Hello {value}</div>;
+    return (
+    <Router>
+        <Routes >
+            <Route path="/" element={<Home />} />
+        </Routes>
+    </Router>
+    );
 }
 
 export default App;
